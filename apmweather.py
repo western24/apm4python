@@ -26,7 +26,7 @@ def weather(code):
     some_function1()
     
     #Access to Meteorological Agency WEB API
-    @zipkin_span(service_name='Weather SampleAPM', span_name='Access Weathere API')
+    @zipkin_span(service_name='Weather SampleAPM', span_name='Access Weather API')
     def Access_API():
         api = "https://www.jma.go.jp/bosai/forecast/data/forecast/{areacode}.json"       
         url = api.format(areacode = code)
