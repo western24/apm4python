@@ -2,7 +2,7 @@ import requests,json,time,sys
 from py_zipkin import Encoding
 from py_zipkin.zipkin import zipkin_span
 
-#APMのエンドポイント
+#APM Endpoint
 def http_transport(encoded_span):
     requests.post(
         'https://<APMのエンドポイント>/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=<Publid Key>',
@@ -19,13 +19,13 @@ def weather(code):
       sample_rate=100
   ):     
     
-    #Span表示用のダミー処理1
+    #Span Dammy1
     @zipkin_span(service_name='Weather SampleAPM', span_name='Span Sleep1')
     def some_function1():
         time.sleep(5/1000)
     some_function1()
     
-    #気象庁のAPIにアクセス
+    #Access to Meteorological Agency WEB API
     @zipkin_span(service_name='Weather SampleAPM', span_name='Access Weathere API')
     def Access_API():
         api = "https://www.jma.go.jp/bosai/forecast/data/forecast/{areacode}.json"       
@@ -38,7 +38,7 @@ def weather(code):
         print(wday + " " + name + " " + weather)  
     Access_API()
     
-    #Span表示用のダミー処理2
+    #Span Dammy2
     @zipkin_span(service_name='Weather SampleAPM', span_name='Span Sleep2')
     def some_function2():
         time.sleep(5/1000)
