@@ -5,7 +5,7 @@ from py_zipkin.zipkin import zipkin_span
 #APM Endpoint
 def http_transport(encoded_span):
     requests.post(
-        'https://<APMのエンドポイント>/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=<Publid Key>',
+        'https://<APM Endpoint>/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=<Publid Key>',
         data=encoded_span,
         headers={'Content-Type': 'application/json'},
     )    
@@ -45,3 +45,4 @@ def weather(code):
     some_function2()
                     
 weather(sys.argv[1])
+    
